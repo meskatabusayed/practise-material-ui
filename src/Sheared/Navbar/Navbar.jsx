@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Container } from '@mui/material';
+import SavedSearchIcon from '@mui/icons-material/SavedSearch';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Services' , 'Blogs', 'Contact'];
@@ -30,7 +30,7 @@ function Navbar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        M.DoC
       </Typography>
       <Divider />
       <List>
@@ -42,7 +42,9 @@ function Navbar(props) {
           </ListItem>
         ))}
       </List>
+      
     </Box>
+   
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -51,8 +53,8 @@ function Navbar(props) {
     
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar sx={{ background: 'transparent'}} component="nav">
-      <Container maxWidth="md">
+      <AppBar sx={{ background: 'transparent' , py: 2}} component="nav">
+      <Container maxWidth="lg">
 
         <Toolbar>
           <IconButton
@@ -66,18 +68,30 @@ function Navbar(props) {
           </IconButton>
           <Typography
             color={'primary'}
-            variant="h6"
+            variant="h4"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}
           >
-            MUI
+            M.DoC
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} >
+              <Button sx={{color: "#272727" , fontWeight: '600' , fontSize: '1.1rem' }} key={item} >
                 {item}
               </Button>
             ))}
+            
+            <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mx: 2,  }}
+          >
+            <SavedSearchIcon/>
+          </IconButton>
+
+            <Button variant='contained' color='secondary' sx={{py: 1.4 , ml: 2 }}>Make Appoinment</Button>
           </Box>
         </Toolbar>
         </Container>
@@ -99,7 +113,7 @@ function Navbar(props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ p: 3  }}>
         <Toolbar />
         <Typography>
          
