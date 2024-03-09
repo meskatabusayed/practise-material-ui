@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Container } from '@mui/material';
 import SavedSearchIcon from '@mui/icons-material/SavedSearch';
+import AppoinmentModal from '../../components/AppoinmentModal/AppoinmentModal';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Services' , 'Blogs', 'Contact'];
@@ -22,7 +23,9 @@ const navItems = ['Home', 'About', 'Services' , 'Blogs', 'Contact'];
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -76,7 +79,7 @@ function Navbar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button sx={{color: "#272727" , fontWeight: '600' , fontSize: '1.1rem' }} key={item} >
+              <Button sx={{color: "#272727" , fontWeight: '600' , fontSize: '1.1rem'  }} key={item} >
                 {item}
               </Button>
             ))}
@@ -91,10 +94,11 @@ function Navbar(props) {
             <SavedSearchIcon/>
           </IconButton>
 
-            <Button variant='contained' color='secondary' sx={{py: 1.4 , ml: 2 }}>Make Appoinment</Button>
+            <Button onClick={() => handleOpen()}  variant='contained' color='secondary' sx={{py: 1.4 , ml: 2 }}>Make Appoinment</Button>
           </Box>
         </Toolbar>
         </Container>
+        <AppoinmentModal open={open} handleClose={handleClose} />
       </AppBar>
       <nav>
         <Drawer
