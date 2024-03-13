@@ -1,4 +1,5 @@
 import Navbar from "./Sheared/Navbar/Navbar"
+import SectionTitle from "./Sheared/Navbar/SectionTitle"
 
 
 
@@ -9,6 +10,7 @@ function App() {
     <>
       
       <Navbar></Navbar>
+      <SectionTitle/>
       
     </>
   )
